@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bebidas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Atualizar"
+          refreshingSpinner="circles"
+          refreshingText="Atualizando...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <ion-searchbar 
+      [(ngModel)]="beers_name"
+      showCancelButton 
+      cancelButtonText="Cancelar" 
+      placeholder="Localize a Bebida" 
+      color="dark" 
+      animated
+      (change)="atualizaBebidas()"></ion-searchbar>
+
+  <ion-card *ngFor="let beer of beers">
+    <ion-card-header >
+      <ion-card-subtitle>Nome:</ion-card-subtitle>
+      <p>{{beer.name}}</p>
+      <ion-item >
+          <ion-img   [src]="beer.image_url"></ion-img>
+          
+      </ion-item>
+      <ion-label>Dados da bebida</ion-label>
+      <p class="card-text"><b>Descrição:</b> {{beer.description}}<p>
+      <p class="card-text"><b>Fabricação:</b> {{beer.first_brewed}}<p>
+      <p class="card-text"><b>Nível de Atenuação:</b> {{beer.attenuation_level}}<p>
+      <p class="card-text"><b>Logo Marca:</b> {{beer.tagline}}<p>
+      <p class="card-test"><b>"Valor":</b>{{beer.Value}}</p>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
