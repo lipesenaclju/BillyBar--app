@@ -10,7 +10,8 @@ export class WebServiceBeersService {
 
   constructor(private http: HttpClient) { }
 
-  getBeers(){
-    return this.http.get(`${this.URL}beers`);
+getBeers(id=""){
+    return this.http.get(`${this.URL}beers/${id}`);
+    
   }
 }

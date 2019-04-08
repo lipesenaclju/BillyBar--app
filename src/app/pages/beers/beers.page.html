@@ -24,7 +24,7 @@
       animated
       (change)="atualizaBebidas()"></ion-searchbar>
 
-  <ion-card *ngFor="let beer of beers">
+  <ion-card *ngFor="let beer of beers" routerLink="/descricao/{{beer.title}}" >
     <ion-card-header >
       <ion-card-subtitle>Nome:</ion-card-subtitle>
       <p>{{beer.name}}</p>
