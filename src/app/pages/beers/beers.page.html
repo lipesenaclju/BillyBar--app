@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Bebidas</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Beers
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +21,7 @@
       </ion-refresher>
 
       <ion-searchbar 
-      [(ngModel)]="beers_name"
+      [(ngModel)]="cerveja_name"
       showCancelButton 
       cancelButtonText="Cancelar" 
       placeholder="Localize a Bebida" 
@@ -24,7 +29,7 @@
       animated
       (change)="atualizaBebidas()"></ion-searchbar>
 
-  <ion-card *ngFor="let beer of beers">
+  <ion-card *ngFor="let beer of beers" routerLink="/detalhes/{{beer.id}}">
     <ion-card-header >
       <ion-card-subtitle>Nome:</ion-card-subtitle>
       <p>{{beer.name}}</p>
