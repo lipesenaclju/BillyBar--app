@@ -37,7 +37,7 @@ export class BeersPage implements OnInit {
 
   await loading.present();
 
-    await this.WebServiceBeersService.getBeers(param).subscribe(
+    await this.WebServiceBeersService.getBeers().subscribe(
       data=>{
         this.beers = data;
         console.log(this.beers);

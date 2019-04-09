@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json;charset=utf-8' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebServiceBeersService {
 
-  private URL:string = "https://api.punkapi.com/v2/beers";//https://api.punkapi.com/v2/beers?brewed_before=11-2012&////=6
+  private URL:string = "https://api.punkapi.com/v2/beers";
 
   constructor(private http: HttpClient) { }
 
 
   // função (método) terá um retorno do tipo Observable
-  getBeers(param:string):Observable<any> {
-    const url = `${this.URL}/${param}`;
+  getBeers():Observable<any> {
+    const url = `${this.URL}`;
     return this.http.get<any>(url).pipe(
-      tap(_ => console.log(`O parametro requisitado foi: ${param} pela URL: ${url}`)),
-      catchError(this.handleError<any>(`Falha no getMovies parametro = ${param}`))
+      tap(_ => console.log(`O parametro requisitado foi:  pela URL: ${url}`)),
+      catchError(this.handleError<any>(`Falha no getMovies parametro = `))
     );
   }
 
