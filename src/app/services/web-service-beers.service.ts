@@ -8,7 +8,7 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class WebServiceBeersService {
 
-  private URL:string = "https://api.punkapi.com/v2/beers";
+  private URL:string = "https://api.punkapi.com/v2/beers";//https://api.punkapi.com/v2/beers?brewed_before=11-2012&////=6
 
   constructor(private http: HttpClient) { }
 
